@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jenna Lenna | About</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="header-inner">
+			<div class="site-title">Jenna Lenna</div>
+			<button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">☰</button>
+		</div>
+	</header>
+
+	<nav id="nav-drawer" class="nav-drawer" aria-hidden="true">
+		<div class="nav-drawer__header">
+			<span class="nav-drawer__title">Menu</span>
+			<button class="menu-close" aria-label="Close navigation">×</button>
+		</div>
+		<a class="nav-link" href="index.html">Home</a>
+		<a class="nav-link" href="portfolio.html">Portfolio</a>
+		<a class="nav-link" href="about%20me.html">About Me</a>
+		<a class="nav-link" href="author.html">I write books</a>
+	</nav>
+	<div class="nav-overlay" hidden></div>
+
+	<main class="content">
+		<section class="hero">
+			<h1 class="page-heading">About Me</h1>
+			<p class="lede">A brief intro to Jenna Lenna.</p>
+		</section>
+
+		<section class="two-column">
+			<div class="card placeholder">Story coming soon</div>
+			<div class="card placeholder">Highlights coming soon</div>
+		</section>
+	</main>
+
+	<script>
+		const drawer = document.getElementById('nav-drawer');
+		const toggle = document.querySelector('.menu-toggle');
+		const closeBtn = document.querySelector('.menu-close');
+		const overlay = document.querySelector('.nav-overlay');
+
+		const openDrawer = () => {
+			drawer.classList.add('open');
+			overlay.hidden = false;
+			toggle.setAttribute('aria-expanded', 'true');
+			drawer.setAttribute('aria-hidden', 'false');
+		};
+
+		const closeDrawer = () => {
+			drawer.classList.remove('open');
+			overlay.hidden = true;
+			toggle.setAttribute('aria-expanded', 'false');
+			drawer.setAttribute('aria-hidden', 'true');
+		};
+
+		toggle.addEventListener('click', openDrawer);
+		closeBtn.addEventListener('click', closeDrawer);
+		overlay.addEventListener('click', closeDrawer);
+		drawer.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer));
+	</script>
+</body>
+</html>
