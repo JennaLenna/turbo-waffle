@@ -581,3 +581,8 @@ a {
 	font-style: italic;
 	font-size: 0.9rem;
 }
+
+.placeholder-message {
+	text-align: center;
+	padding: 2rem;
+}
