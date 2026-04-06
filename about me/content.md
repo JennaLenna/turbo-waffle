@@ -10,7 +10,7 @@ Write your intro paragraph(s) here. This will appear as the main text on your Ab
 
 > Example: "Hi, I'm Jenna! I'm a writer, artist, and all-around creative person based in ..."
 
-[YOUR TEXT HERE]
+I'm just a girl trying to do the art thing ✨ I love to create stuff and get inspired!
 
 ---
 
