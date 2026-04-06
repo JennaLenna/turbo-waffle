@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jenna Lenna | Extra Pieces</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="header-inner">
+			<div class="site-title">Jenna Lenna</div>
+			<button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">☰</button>
+		</div>
+	</header>
+
+	<nav id="nav-drawer" class="nav-drawer" aria-hidden="true">
+		<div class="nav-drawer__header">
+			<span class="nav-drawer__title">Menu</span>
+			<button class="menu-close" aria-label="Close navigation">×</button>
+		</div>
+		<a class="nav-link" href="index.html">Home</a>
+		<a class="nav-link" href="portfolio.html">Portfolio</a>
+		<a class="nav-link" href="about%20me.html">About Me</a>
+		<a class="nav-link" href="author.html">I write books</a>
+	</nav>
+	<div class="nav-overlay" hidden></div>
+
+	<main class="content">
+		<section class="hero">
+			<h1 class="page-heading">Extra Pieces</h1>
+			<p class="lede">A few extra special pieces from Jenna.</p>
+		</section>
+
+		<section class="masonry" aria-label="Artwork grid">
+			<article class="art-card" data-title="Krita Drawing" data-desc="This was created for a DTIYS challenge, and was also the last drawing I made using Krita, as I had to switch to Procreate when my computer became laggy. I never had the chance to truly become familiar with all the features Krita had, but I was determined to put the knowledge I did have to good use when I drew this." data-src="art%20for%20portfolio/new%20drawing.jpg" tabindex="0">
+				<img class="art-thumb" src="art%20for%20portfolio/new%20drawing.jpg" alt="Art piece preview 1">
+				<div class="art-meta">
+					<h3 class="art-title">Krita Drawing</h3>
+				</div>
+			</article>
+
+			<article class="art-card" data-title="Realistic Drawing" data-desc="I hate drawing realistic art, but I wanted to challenge myself with this piece. I had to use a lot of tutorials to learn how to draw each facial feature, but it was the hair brushes I found that saved me in the end. You can find the full speedpaint on my YouTube channel!" data-src="art%20for%20portfolio/first%20realistic%20drawing%20I%E2%80%99ve%20done%20%F0%9F%92%96.jpg" tabindex="0">
+				<img class="art-thumb" src="art%20for%20portfolio/first%20realistic%20drawing%20I%E2%80%99ve%20done%20%F0%9F%92%96.jpg" alt="Art piece preview 2">
+				<div class="art-meta">
+					<h3 class="art-title">Realistic Drawing</h3>
+				</div>
+			</article>
+		</section>
+	</main>
+
+	<div class="modal-backdrop" hidden></div>
+	<div class="art-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+		<button class="modal-close" aria-label="Close artwork details">×</button>
+		<img class="modal-image" src="" alt="">
+		<div class="modal-copy">
+			<h3 id="modal-title" class="modal-title">Art piece</h3>
+			<p class="modal-desc">Coming soon.</p>
+		</div>
+	</div>
+
+	<script>
+		const drawer = document.getElementById('nav-drawer');
+		const toggle = document.querySelector('.menu-toggle');
+		const closeBtn = document.querySelector('.menu-close');
+		const overlay = document.querySelector('.nav-overlay');
+		const artCards = document.querySelectorAll('.art-card');
+		const modal = document.querySelector('.art-modal');
+		const modalBackdrop = document.querySelector('.modal-backdrop');
+		const modalImg = document.querySelector('.modal-image');
+		const modalTitle = document.querySelector('.modal-title');
+		const modalDesc = document.querySelector('.modal-desc');
+		const modalClose = document.querySelector('.modal-close');
+
+		const openDrawer = () => {
+			drawer.classList.add('open');
+			overlay.hidden = false;
+			toggle.setAttribute('aria-expanded', 'true');
+			drawer.setAttribute('aria-hidden', 'false');
+		};
+
+		const closeDrawer = () => {
+			drawer.classList.remove('open');
+			overlay.hidden = true;
+			toggle.setAttribute('aria-expanded', 'false');
+			drawer.setAttribute('aria-hidden', 'true');
+		};
+
+		toggle.addEventListener('click', openDrawer);
+		closeBtn.addEventListener('click', closeDrawer);
+		overlay.addEventListener('click', closeDrawer);
+		drawer.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer));
+
+		const openModal = (card) => {
+			const src = card.dataset.src;
+			const title = card.dataset.title || 'Art piece';
+			const desc = card.dataset.desc || 'Coming soon.';
+			modalImg.src = src;
+			modalImg.alt = title;
+			modalTitle.textContent = title;
+			modalDesc.textContent = desc;
+			modal.hidden = false;
+			modalBackdrop.hidden = false;
+			document.body.style.overflow = 'hidden';
+			modalClose.focus();
+		};
+
+		const closeModal = () => {
+			modal.hidden = true;
+			modalBackdrop.hidden = true;
+			document.body.style.overflow = '';
+			modalImg.src = '';
+		};
+
+		artCards.forEach(card => {
+			card.addEventListener('click', () => openModal(card));
+			card.addEventListener('keypress', (e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					openModal(card);
+				}
+			});
+		});
+
+		modalBackdrop.addEventListener('click', closeModal);
+		modalClose.addEventListener('click', closeModal);
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && !modal.hidden) closeModal();
+		});
+	</script>
+</body>
+</html>
