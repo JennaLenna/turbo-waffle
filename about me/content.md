@@ -33,7 +33,7 @@ List the photo files you're adding to this folder below. For each one, give it a
 | Filename | Caption / Alt Text |
 |----------|--------------------|
 | example-photo.jpg | Me at the beach |
-|  |  |
+|  20260224_150328~3.jpg|  |
 |  |  |
 |  |  |
 
