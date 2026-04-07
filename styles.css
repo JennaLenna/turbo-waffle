@@ -586,3 +586,68 @@ a {
 	text-align: center;
 	padding: 2rem;
 }
+
+/* ── Social links on About Me ────────────────────────────── */
+.socials-heading {
+	font-size: 1.15rem;
+	font-weight: 700;
+	margin-top: 0.75rem;
+}
+
+.socials-links {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	margin-top: 0.4rem;
+}
+
+.social-link {
+	background-color: var(--nav);
+	border-radius: 999px;
+	color: #0f0d0c;
+	font-size: 1.05rem;
+	font-weight: 700;
+	padding: 0.5rem 1.25rem;
+	text-decoration: none;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+	background-color: #6fa08a;
+	transform: translateY(-2px);
+}
+
+.social-link:focus-visible {
+	outline: 2px solid #0f0d0c;
+	outline-offset: 3px;
+}
+
+/* ── Back to Portfolio button ────────────────────────────── */
+.back-to-portfolio-wrap {
+	display: flex;
+	justify-content: center;
+	padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.back-to-portfolio {
+	background-color: var(--nav);
+	border-radius: 999px;
+	color: #0f0d0c;
+	font-size: 1rem;
+	font-weight: 700;
+	padding: 0.65rem 1.75rem;
+	text-decoration: none;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.back-to-portfolio:hover,
+.back-to-portfolio:focus-visible {
+	background-color: #6fa08a;
+	transform: translateY(-2px);
+}
+
+.back-to-portfolio:focus-visible {
+	outline: 2px solid #0f0d0c;
+	outline-offset: 3px;
+}
