@@ -191,14 +191,15 @@
 
 			if (src !== preview) {
 				const fullImage = new Image();
+				const canSwapToFull = () => modal.dataset.activeSrc === src && !modal.hidden;
 				fullImage.decoding = 'async';
 				fullImage.onload = () => {
-					if (modal.dataset.activeSrc !== src || modal.hidden) return;
+					if (!canSwapToFull()) return;
 					modalImg.src = src;
 					modalImg.classList.remove('is-loading');
 				};
 				fullImage.onerror = () => {
-					if (modal.dataset.activeSrc !== src || modal.hidden) return;
+					if (!canSwapToFull()) return;
 					modalImg.classList.remove('is-loading');
 				};
 				fullImage.src = src;
